@@ -1,6 +1,6 @@
 # DevFlow API
 
-DevFlow API est une API REST de gestion de projets et de tâches. Le projet démontre la conception de routes, la validation des entrées, les réponses d’erreur, la pagination, les tests automatisés et la documentation OpenAPI.
+DevFlow API est une API REST de gestion de projets et de tâches accompagnée d’un dashboard frontend. Le projet démontre la conception de routes, la validation des entrées, les réponses d’erreur, la pagination, les tests automatisés, la documentation OpenAPI et la consommation d’une API depuis une interface web.
 
 ## Fonctionnalités
 
@@ -15,6 +15,7 @@ DevFlow API est une API REST de gestion de projets et de tâches. Le projet dém
 - CORS activé pour les prototypes frontend.
 - Documentation dans `openapi.json`.
 - Tests natifs avec `node:test`.
+- Dashboard web à la racine avec projets, tâches, statuts et création de tâche.
 
 ## Installation et lancement
 
@@ -25,6 +26,8 @@ npm start
 ```
 
 L’API démarre sur `http://localhost:3000` ou sur le port défini par la variable `PORT`.
+
+Ouvre ensuite `http://localhost:3000/` pour voir le dashboard. Les données affichées viennent des routes `/api/projects` et `/api/projects/:id/tasks`.
 
 ```bash
 PORT=4000 npm start
@@ -75,7 +78,10 @@ curl -X PUT http://localhost:3000/api/tasks/t-1 \
 ## Architecture
 
 ```text
-server.js       # serveur HTTP, routes et validation
+server.js        # serveur HTTP, routes et validation
+public/index.html # dashboard frontend
+public/dashboard.css # styles du dashboard
+public/dashboard.js # client qui consomme l’API
 openapi.json    # contrat API OpenAPI 3
  test-api.js    # tests d’intégration Node.js
 package.json    # scripts de lancement et test
@@ -97,4 +103,4 @@ Les données sont actuellement conservées en mémoire et sont réinitialisées 
 
 ## Auteur
 
-Projet portfolio d’Amirague Hounka.
+Projet portfolio d’Amir AGUEHOUNKA.
